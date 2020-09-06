@@ -1,0 +1,81 @@
+{% extends "term/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} Level 1 {% endblock %} {% block body %}
+<div class="jumbotron jumbo-vertical-center bg-dark mb-0 radius-0">
+
+    <div class="container">
+        {% if messages %}
+            <ul class="messages">
+                {% for msg in messages %}
+                <p class="text-center">
+                <div class="alert alert-{{msg.level_tag}} alert-dismissible text-center" role="alert" style="font-family: 'Fredoka One';font-size: 18px;">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{msg.message}}
+                </div>
+                </p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        <div class="login-form">
+
+            {% if form.errors %}
+            <p>There's something wrong with what you entered!</p>
+            {% endif %} {% if next %}
+            <p>Hey, you can't access that page.</p>
+            {% endif %}
+            <form action="/levels/" method="post">
+                {% csrf_token %}
+
+                <h2 class="display-4 text-center"> Level 1 Completed</h2>
+                <img src="{% static 'images/done.svg' %}" class="mx-auto d-block" style="height: 200px; width: 100%;">
+                <table class="table" style="display: block;">
+                    <tr>
+                        <td>
+                            <p style="font-family: 'Fredoka One';font-size: 18px; "><mark href="#"
+                                    class="text-decoration-none" style="color:black;"> The words found are : </p>
+                            {% for x in word %}
+                            <li class="btn btn-primary" style="font-family: 'Fredoka One';font-size: 18px;"><a href="#"
+                                class="btn btn-primary text-decoration-none "> {{x}} </a></li>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family: 'Fredoka One';font-size: 18px; "><mark href="#"
+                                    class="text-decoration-none" style="color:black;"> The extra words are : </p>
+                            {% if extra %}
+
+                            {% for x in extra %}
+                            <li class="btn btn-primary" style="font-family: 'Fredoka One';font-size: 18px;"><a href="#"
+                                    class="btn btn-primary text-decoration-none "> {{x}} </a></li>
+                            {% endfor %}
+                            {% else %}
+                            <p style="font-family: 'Fredoka One';font-size: 18px;"><a href="#"
+                                class="text-decoration-none ">No extra words found</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="font-family: 'Fredoka One';font-size: 18px; "><mark href="#"
+                                    class="text-decoration-none" style="color:black;"> Definition of the words found are
+                                    : </p>
+                            {% for p in def %}
+                            
+                            <mark><li style="font-family: 'Fredoka One';font-size: 18px;"><a href="#"
+                                    class="text-decoration-none "> {{p}} </li></mark>
+                                    <br>
+
+                            {% endfor %}
+                    <tr>
+                        <td>
+                            <!-- {{form | crispy}} -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block" value="login">Back to
+                                    levels</button>
+                            </div>
+            </form>
+        </div>
+
+        {% endblock %}

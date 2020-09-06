@@ -1,0 +1,39 @@
+{% extends "term/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} User Login {% endblock %} {% block body %}
+<style>
+.table {
+    margin: auto;
+    width: 50% !important; 
+ }
+ .fontswami {
+     /*font-size: 18px;*/
+     font-family: 'Fredoka One'
+ }
+ </style>
+<div class="jumbotron jumbotron-fullheight jumbo-vertical-center bg-dark mb-0 radius-0">
+    <div class="container">
+    <div class="login-form">
+        <p class="text-center text-light"
+        style="font-family: 'Fredoka One';font-size: 34px;"><a href="#" class="text-decoration-none text-light">Levels</a></p>
+        <table class="table" style="display: block;"><tr><td>
+            <a class="btn btn-primary fontswami" href="/level1/">Level 1</a>
+            <a class="btn btn-primary fontswami" href="/level2/">Level 2</a> 
+            <a class="btn btn-primary fontswami" href="/level3/">Level 3</a>
+            <a class="btn btn-primary fontswami" href="/level4/">Level 4</a>
+            <a class="btn btn-primary fontswami" href="/level5/">Level 5</a>
+           </td></tr>
+           <tr><td>
+            <a class="btn btn-primary fontswami" href="/level6/">Level 6</a>
+            <a class="btn btn-primary fontswami" href="/level7/">Level 7</a>
+            <a class="btn btn-primary fontswami" href="/level8/">Level 8 </a>
+            <a class="btn btn-primary fontswami" href="/level9/">Level 9</a>
+            <a class="btn btn-primary fontswami" style="width:19%" href="/level10/">End</a> 
+           </td></tr>  
+             <table>
+        <p class="text-center text-light"
+        style="font-family: 'Fredoka One';font-size: 18px;"><a href="#" class="text-decoration-none text-light">Enjoy ;)</a></p>
+    </div></div></div>
+    
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "term/base.html" %}{% load static%}
+
+
+
+  
+{% block body %}
+
+<div class="jumbotron jumbotron-fullheight jumbo-vertical-center text-light text-center bg-dark mb-0 radius-0">
+ 
+  <div class="container">
+    {% if messages %}
+            <ul class="messages">
+                {% for msg in messages %}
+                <p class="text-center">
+                <div class="alert alert-{{msg.level_tag}} alert-dismissible text-center" role="alert" style="font-family: 'Fredoka One';font-size: 18px;">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{msg.message}}
+                </div>
+                </p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+      <h1 class="display-2 text-light text-uppercase">El'terminoLOGY</i></b></h1>
+      <h4 style="font-family: 'Fredoka One';font-size: 22px;">A jest where words jumble, and your mind fumbles.<h4>
+
+      <div class="mt-4">
+        {% if user.is_authenticated %}
+        <a href="/levels/"
+           class="btn btn-danger btn-lg m-2 btn-wide">
+          <span style="font-family: 'Fredoka One';font-size: 22px;">Let's Play</span>
+        </a>
+
+        {% else %}
+        
+        <a href="/register/"
+           class="btn btn-danger btn-lg m-2 btn-wide">
+          <span style="font-family: 'Fredoka One';font-size: 22px;">Let's Play</span>
+        </a>
+        {% endif %}
+      </div>
+      
+  </div>
+</div>
+
+
+<!-- <div class="container py-5">
+
+</div> -->
+
+{% endblock %}

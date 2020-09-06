@@ -1,0 +1,44 @@
+{% extends "term/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %} Instructions {% endblock %} {% block body %}
+<div class="jumbotron jumbotron-fullheight jumbo-vertical-center bg-dark mb-0 radius-0">
+
+    <div class="container">
+        {% if messages %}
+            <ul class="messages">
+                {% for msg in messages %}
+                <p class="text-center">
+                <div class="alert alert-{{msg.level_tag}} alert-dismissible text-center" role="alert" style="font-family: 'Fredoka One';font-size: 18px;">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{msg.message}}
+                </div>
+                </p>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        <div class="login-form">
+
+            {% if form.errors %}
+            <p>There's something wrong with what you entered!</p>
+            {% endif %} {% if next %}
+            <p>Hey, you can't access that page.</p>
+            {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <h2 class="display-4 text-center"> General Instructions</h2>
+                <div style="font-family: 'Fredoka One';font-size: 14px;">
+                <li>The game comprises of 10 levels </li>
+                <li>Each level presents you an un_scrambled word, which needs to be scrambled up.</li>
+                <li>The word entered by you must be greater than or equal to 3 characters</li>
+                <li>You can only enter the characters present in the un_scrambled word</li>
+                <li>You will enter 5 words which when matches our dictionary lookup, passes you in that particular level and rewards you with a point.</li>
+                <li>If the word entered by you doesn't matches our dictionary lookup but still exist in the universal dictionary, then here you discovers an extra word. Per two extra-words you'll be offered 2 reward points.</li>   
+                <li>If your word doesn't exist in our dictionary lookup and niether in the universal dictionary, you are flagged and the game's still continue</li>
+                <li>In the end, we provide you the definition for the actual & extra words</li>  
+                </div>      
+            </form>
+        </div>
+
+        {% endblock %}
